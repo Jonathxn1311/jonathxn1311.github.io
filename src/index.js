@@ -1,24 +1,27 @@
-const express = require('express')
 const mongoose = require('mongoose')
-const Message = require('./models/message.js')
 const http = require('http')
-
-
-const server = http.createServer()
-
-
-const io = require('socket.io')(server)
-
+const express = require('express')
+const Message = require('./models/message.js')
+const port = 3001
 const app = express()
 
-app.set('port', 3001)
+const server = http.createServer((req, res) => {
+
+})
+
+const io = require('socket.io')(server)
 
 app.use(express.static(__dirname))
 
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/public/index.html')
+    res.sendFile(__dirname + 'public/index.html')
 })
 
-app.listen(app.get('port'), () => {
-    console.log(`Mensajeria escuchando por el puerto ${app.get('port')} `)
+io.on('connection', (socket) => {
+    console.log('Nuevo usuario')
 })
+
+server.listen(port, () => {
+    console.log(`Mensajeria escuchando por el puerto ${port}`)
+})
+
