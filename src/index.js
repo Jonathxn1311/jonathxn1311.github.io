@@ -1,27 +1,29 @@
 const mongoose = require('mongoose')
-const http = require('http')
 const express = require('express')
-const Message = require('./models/message.js')
-const port = 3001
 const app = express()
+const http = require('http').createServer(app)
 
-const server = http.createServer((req, res) => {
+const Message = require('./models/message.js')
 
-})
-
-const io = require('socket.io')(server)
+const io = require('socket.io')(http)
 
 app.use(express.static(__dirname))
 
+app.set('port', 3000)
+
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + 'public/index.html')
+    res.sendFile(__dirname + '/public/index.html')
 })
 
-io.on('connection', (socket) => {
-    console.log('Nuevo usuario')
+
+http.listen(app.get('port'), () => {
+    console.log(`El servidor escuchando por el puerto ${app.get('port')}`)
 })
 
-server.listen(port, () => {
-    console.log(`Mensajeria escuchando por el puerto ${port}`)
+io.on('connection', socket => {
+    socket.broadcast.emit('new user', { message: 'Ha entrado un nuevo usuario al chat' })
+    socket.on('new message', message => {
+        socket.emit('user message', message)
+    })
 })
 

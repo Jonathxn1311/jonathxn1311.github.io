@@ -17,6 +17,7 @@ html {
     bottom: 0;
     padding: .5rem;
     width: 100%;
+    height: 10%;
     background-color: #1D1D1D;
     display: flex;
 }
@@ -28,11 +29,13 @@ html {
 
 #chat-form button {
     width: 20%;
-    background-color: 80BD01;
+    height: 90%;
+    background-color: #80BD01;
 }
 
 #message-text {
     width: 80%;
+    height: 90%;
 
 }
 
