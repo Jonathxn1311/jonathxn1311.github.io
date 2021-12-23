@@ -1,0 +1,26 @@
+{
+  "name": "mensajeria-instantanea",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jonathxn1311/mensajeria-instantanea.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jonathxn1311/mensajeria-instantanea/issues"
+  },
+  "homepage": "https://github.com/Jonathxn1311/mensajeria-instantanea#readme",
+  "dependencies": {
+    "express": "^4.17.2",
+    "mongoose": "^6.1.3",
+    "nodemon": "^2.0.15",
+    "socket.io": "^4.4.0"
+  }
+}
