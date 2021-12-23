@@ -20,5 +20,9 @@
         chat.insertAdjacentHTML('beforeend', `<li>${newMessage.message}</li>`)
     })
 
+    io.on('user disconnected', userMessage => {
+        alert(userMessage.message)
+    })
+
 
 })(document, io())

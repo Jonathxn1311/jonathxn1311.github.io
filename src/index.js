@@ -21,9 +21,13 @@ http.listen(app.get('port'), () => {
 })
 
 io.on('connection', socket => {
+    let message = 'Se desconecto un usuario'
     socket.broadcast.emit('new user', { message: 'Ha entrado un nuevo usuario al chat' })
     socket.on('new message', message => {
         socket.emit('user message', message)
+    })
+    socket.on('disconnect', () => {
+        socket.broadcast.emit('user disconnected', { message })
     })
 })
 
